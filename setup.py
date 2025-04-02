@@ -10,10 +10,7 @@ readme = open(readme_path).read()
 
 setup(
     name='APScheduler',
-    use_scm_version={
-        'version_scheme': 'post-release',
-        'local_scheme': 'dirty-tag'
-    },
+    # Removed use_scm_version as it's now configured in pyproject.toml
     description='In-process task scheduler with Cron-like capabilities',
     long_description=readme,
     author=u'Alex Grönholm',
@@ -34,8 +31,9 @@ setup(
     license='MIT',
     packages=find_packages(exclude=['tests']),
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4',
+    # Keeping setuptools_scm in setup_requires for backward compatibility
     setup_requires=[
-        'setuptools_scm'
+        'setuptools_scm>=8.0.0'
     ],
     install_requires=[
         'setuptools >= 61',
